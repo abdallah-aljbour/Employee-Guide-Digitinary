@@ -166,7 +166,7 @@ const Exam: React.FC = () => {
         if (videoRef.current) {
           videoRef.current.srcObject = stream;
         }
-      } catch (err) {
+    } catch {
         setError("Camera and microphone access is required to take the exam.");
       }
     };
@@ -179,13 +179,13 @@ const Exam: React.FC = () => {
         mediaStream.getTracks().forEach((track) => track.stop());
       }
     };
-  }, []);
+  }, [mediaStream, navigate]);
 
   // Prevent tab navigation and handle tab switching
   useEffect(() => {
     const handleBeforeUnload = (event: BeforeUnloadEvent) => {
       event.preventDefault();
-      event.returnValue = ""; // Required for Chrome
+      event.returnValue = ""; 
     };
 
     const handleVisibilityChange = () => {
