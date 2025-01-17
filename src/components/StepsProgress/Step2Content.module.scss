@@ -1,0 +1,61 @@
+.step2Content {
+  padding: 20px;
+  background-color: #f0fff0; // Light green background for Step 2
+  border-radius: 8px;
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+
+  h2 {
+    font-size: 2rem;
+    margin-bottom: 20px;
+    color: #32cd32; // Green color for Step 2
+  }
+
+  .card {
+    background-color: white;
+    border-radius: 8px;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+    padding: 20px;
+    margin-bottom: 20px;
+
+    h3 {
+      font-size: 1.5rem;
+      margin-bottom: 15px;
+      color: #32cd32; // Green color for headings
+    }
+
+    .overview,
+    .resources {
+      margin-bottom: 20px;
+
+      h4 {
+        font-size: 1.2rem;
+        margin-bottom: 10px;
+        color: #333;
+      }
+
+      p {
+        font-size: 1rem;
+        color: #555;
+        line-height: 1.5;
+      }
+
+      ul {
+        list-style-type: disc;
+        margin-left: 20px;
+
+        li {
+          margin-bottom: 8px;
+
+          a {
+            color: #32cd32;
+            text-decoration: none;
+
+            &:hover {
+              text-decoration: underline;
+            }
+          }
+        }
+      }
+    }
+  }
+}

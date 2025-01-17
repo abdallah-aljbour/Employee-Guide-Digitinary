@@ -11,8 +11,10 @@
   },
   "dependencies": {
     "digitinary-ui": "^1.0.138",
+    "lucide-react": "^0.471.1",
     "react": "^18.3.1",
     "react-dom": "^18.3.1",
+    "react-router-dom": "^7.1.1",
     "sass": "^1.83.4"
   },
   "devDependencies": {
