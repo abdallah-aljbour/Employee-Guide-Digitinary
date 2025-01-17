@@ -5,6 +5,8 @@ import MainHome from './components/mainHome';
 import ArenaPage from './components/ArenaPage';
 import DgatePage from './components/DgatePafe';
 import KnetPage from './components/knetPage';
+import Exam from './components/Exam/Exam';
+import ExamFinished from './components/Exam/ExamFinished';
 import './scssStyle/App.scss';
 
 const App: React.FC = () => {
@@ -20,6 +22,8 @@ const App: React.FC = () => {
             <Route path="/arena" element={<ArenaPage />} />
             <Route path="/dgate" element={<DgatePage />} />
             <Route path="/knet" element={<KnetPage />} />
+            <Route path="/exam" element={<Exam />} />
+            <Route path="/exam-finished" element={<ExamFinished />} />
           </Routes>
         </div>
       </div>
