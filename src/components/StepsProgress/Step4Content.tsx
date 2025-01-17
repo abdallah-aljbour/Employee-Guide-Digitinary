@@ -10,7 +10,7 @@ const Step4Content: React.FC<Step4ContentProps> = ({ onAnswerCorrect }) => {
   const [currentQuestionIndex, setCurrentQuestionIndex] = useState(0);
   const [incorrectAttempts, setIncorrectAttempts] = useState(0); // Track incorrect attempts
   const [showTimer, setShowTimer] = useState(false); // Control timer visibility
-  const [timer, setTimer] = useState(59); // Timer in seconds
+  const [timer, setTimer] = useState(1); // Timer in seconds
 
   // List of questions with options and correct answers (based on Step 4 content)
   const questions = [
