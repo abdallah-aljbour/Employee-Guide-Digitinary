@@ -1,0 +1,95 @@
+.progressWrapper {
+    margin-top: auto;
+    display: flex;
+    justify-content: space-between;
+    margin-bottom: 20px;
+    padding: 10%;
+  
+    @media (max-width: 768px) {
+      padding: 5%;
+    }
+  }
+  
+  .progressItem {
+    position: relative;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    flex: 1;
+    transition: transform 0.3s ease;
+  
+    @media (max-width: 768px) {
+      font-size: 12px;
+    }
+  
+    &::before {
+      position: absolute;
+      content: "";
+      border-bottom: 2px solid #ccc;
+      width: calc(100% - 20px);
+      top: 20px;
+      left: 10px;
+      z-index: 2;
+    }
+  
+    &::after {
+      position: absolute;
+      content: "";
+      border-bottom: 2px solid #ccc;
+      width: calc(100% - 20px);
+      top: 20px;
+      right: 10px;
+      z-index: 2;
+    }
+  
+    &:first-child::before {
+      content: none;
+    }
+  
+    &:last-child::after {
+      content: none;
+    }
+  
+    .progressCounter {
+      position: relative;
+      z-index: 5;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      width: 40px;
+      height: 40px;
+      border-radius: 50%;
+      background: #ccc;
+      margin-bottom: 6px;
+      cursor: pointer;
+      transition: background-color 0.3s ease;
+    }
+  
+    .progressName {
+      margin-top: 6px;
+    }
+  
+    &.completed {
+      .progressCounter {
+        background-color: #32b1fd; // Blue color for completed steps
+      }
+  
+      &::after {
+        position: absolute;
+        content: "";
+        border-bottom: 2px solid #32b1fd;
+        width: calc(100% - 20px);
+        top: 20px;
+        left: 10px;
+        z-index: 3;
+      }
+    }
+  
+    &.active {
+      font-weight: bold;
+    }
+  
+    &:hover .progressCounter {
+      background-color: #4da8da;
+    }
+  }

@@ -1,0 +1,22 @@
+  .dgatePage {
+      flex: 1;
+      padding: 20px;
+      background: linear-gradient(135deg,
+  rgba(61, 203, 195, 0.9),
+  rgba(255, 255, 255, 0.6) 50%,
+  rgba(62, 108, 219, 0.9)
+);
+      color: #2c3e50;
+      height: 100%;
+      width: 100%;
+      box-sizing: border-box;
+    
+      h1 {
+        font-size: 2rem;
+        margin-bottom: 20px;
+      }
+    
+      p {
+        font-size: 1.2rem;
+      }
+    }
