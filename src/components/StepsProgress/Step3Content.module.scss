@@ -1,57 +1,203 @@
 .step3Content {
-    padding: 20px;
-    background-color: #fff7e6; // Light orange background for Step 3
-    border-radius: 8px;
-    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
-  
-    h2 {
-      font-size: 2rem;
-      margin-bottom: 20px;
-      color: #ff8c42; // Orange color for Step 3
+  padding: 2rem;
+  background: linear-gradient(145deg, #ffffff 0%, #e0f7fa 100%);
+  border-radius: 12px;
+  box-shadow: 0 8px 24px rgba(0, 150, 136, 0.1);
+  transition: all 0.3s ease;
+
+  h2 {
+    font-size: 2.25rem;
+    margin-bottom: 1.5rem;
+    background: linear-gradient(90deg, #0288d1, #009688);
+    background-clip: text;
+    -webkit-background-clip: text;
+    color: transparent;
+    -webkit-text-fill-color: transparent;
+    font-weight: 700;
+  }
+
+  .card {
+    background-color: white;
+    border-radius: 12px;
+    box-shadow: 0 4px 16px rgba(2, 136, 209, 0.08);
+    padding: 1.5rem;
+    margin-bottom: 1.5rem;
+    border: 1px solid rgba(0, 150, 136, 0.1);
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+
+    &:hover {
+      transform: translateY(-4px);
+      box-shadow: 0 8px 24px rgba(2, 136, 209, 0.12);
     }
-  
-    .card {
-      background-color: white;
-      border-radius: 8px;
-      box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
-      padding: 20px;
-      margin-bottom: 20px;
-  
-      h3 {
-        font-size: 1.5rem;
-        margin-bottom: 15px;
-        color: #ff8c42; // Orange color for headings
+
+    h3 {
+      font-size: 1.75rem;
+      margin-bottom: 1rem;
+      color: #0288d1;
+      font-weight: 600;
+      position: relative;
+      display: inline-block;
+      
+      &:after {
+        content: '';
+        position: absolute;
+        bottom: -4px;
+        left: 0;
+        width: 100%;
+        height: 2px;
+        background: linear-gradient(90deg, #0288d1, #009688);
+        border-radius: 1px;
       }
-  
-      .overview,
-      .section {
-        margin-bottom: 20px;
-  
-        h4 {
-          font-size: 1.2rem;
-          margin-bottom: 10px;
-          color: #333;
+    }
+
+    .overview,
+    .section {
+      margin-bottom: 1.5rem;
+      padding: 1rem;
+      border-radius: 8px;
+      background: linear-gradient(145deg, #ffffff, #f8f9fa);
+      border: 1px solid rgba(0, 150, 136, 0.05);
+      
+      h4 {
+        font-size: 1.25rem;
+        margin-bottom: 0.75rem;
+        color: #009688;
+        font-weight: 500;
+        display: flex;
+        align-items: center;
+        gap: 0.5rem;
+
+        &:before {
+          content: '';
+          display: block;
+          width: 12px;
+          height: 12px;
+          background: linear-gradient(45deg, #0288d1, #009688);
+          border-radius: 3px;
+          transform: rotate(45deg);
         }
-  
-        p {
-          font-size: 1rem;
-          color: #555;
-          line-height: 1.5;
-        }
-  
-        ul {
-          list-style-type: disc;
-          margin-left: 20px;
-  
-          li {
-            margin-bottom: 8px;
-            color: #555;
-  
-            strong {
-              color: #ff8c42; // Orange color for strong text
+      }
+
+      p {
+        font-size: 1rem;
+        color: #455a64;
+        line-height: 1.6;
+        margin-bottom: 1rem;
+      }
+
+      ul {
+        list-style: none;
+        margin: 0;
+        padding: 0;
+
+        li {
+          margin-bottom: 0.75rem;
+          padding-left: 1.5rem;
+          position: relative;
+          color: #455a64;
+          transition: transform 0.2s ease;
+
+          &:before {
+            content: '';
+            position: absolute;
+            left: 0;
+            top: 8px;
+            width: 8px;
+            height: 8px;
+            background: linear-gradient(45deg, #0288d1, #009688);
+            border-radius: 50%;
+            transition: transform 0.2s ease;
+          }
+
+          &:hover {
+            transform: translateX(4px);
+
+            &:before {
+              transform: scale(1.2);
+            }
+          }
+
+          strong {
+            color: #0288d1;
+            font-weight: 600;
+            transition: color 0.2s ease;
+
+            &:hover {
+              color: #009688;
             }
           }
         }
       }
     }
   }
+
+  // Media queries for responsive design
+  @media screen and (max-width: 768px) {
+    padding: 1.5rem;
+
+    h2 {
+      font-size: 2rem;
+    }
+
+    .card {
+      padding: 1.25rem;
+
+      h3 {
+        font-size: 1.5rem;
+      }
+
+      .overview,
+      .section {
+        padding: 0.875rem;
+        
+        h4 {
+          font-size: 1.2rem;
+        }
+      }
+    }
+  }
+
+  @media screen and (max-width: 480px) {
+    padding: 1rem;
+
+    h2 {
+      font-size: 1.75rem;
+    }
+
+    .card {
+      padding: 1rem;
+
+      h3 {
+        font-size: 1.25rem;
+      }
+
+      .overview,
+      .section {
+        padding: 0.75rem;
+        
+        h4 {
+          font-size: 1.1rem;
+        }
+      }
+    }
+  }
+}
+
+// Add loading state animation
+@keyframes pulse {
+  0% {
+    opacity: 1;
+  }
+  50% {
+    opacity: 0.6;
+  }
+  100% {
+    opacity: 1;
+  }
+}
+
+.loading {
+  .card {
+    animation: pulse 1.5s ease-in-out infinite;
+  }
+}

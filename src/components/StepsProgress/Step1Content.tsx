@@ -371,6 +371,7 @@
 import React, { useState, useEffect } from 'react';
 import styles from './Step1Content.module.scss';
 import QuestionComponent from './QuestionComponent'; 
+import microFrontEnd from '../../assets/image.png'
 
 
 interface Step1ContentProps {
@@ -478,10 +479,12 @@ const Step1Content: React.FC<Step1ContentProps> = ({ onAnswerCorrect }) => {
         </div>
         <div className={styles.structure}>
           <h4>Structure:</h4>
-          <div className={styles.imagePlaceholder}>
-            {/* Placeholder for image */}
-            <p>Image will be added here</p>
-          </div>
+
+<div className={styles.imagePlaceholder}>
+  {/* Display the imported image */}
+  <img src={microFrontEnd} alt="Micro Front End" className="your-image-class" />
+</div>
+
         </div>
       </div>
 

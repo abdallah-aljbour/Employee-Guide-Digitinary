@@ -154,6 +154,19 @@ const Exam: React.FC = () => {
     },
   ];
 
+  // Function to stop the camera and microphone
+  const stopMediaStream = () => {
+    if (mediaStream) {
+      mediaStream.getTracks().forEach((track) => {
+        track.stop(); // Stop each track
+      });
+      setMediaStream(null); // Clear the mediaStream state
+    }
+    if (videoRef.current) {
+      videoRef.current.srcObject = null; // Clear the video source
+    }
+  };
+
   // Request camera and microphone access
   useEffect(() => {
     const enableCameraAndMicrophone = async () => {
@@ -165,8 +178,10 @@ const Exam: React.FC = () => {
         setMediaStream(stream);
         if (videoRef.current) {
           videoRef.current.srcObject = stream;
+          videoRef.current.play(); // Ensure the video plays
         }
-    } catch {
+      } catch (err) {
+        console.error("Error accessing camera and microphone:", err);
         setError("Camera and microphone access is required to take the exam.");
       }
     };
@@ -175,26 +190,22 @@ const Exam: React.FC = () => {
 
     // Cleanup
     return () => {
-      if (mediaStream) {
-        mediaStream.getTracks().forEach((track) => track.stop());
-      }
+      stopMediaStream(); // Stop camera and microphone when the component unmounts
     };
-  }, [mediaStream, navigate]);
+    // eslint-disable-next-line react-hooks/exhaustive-deps
+  }, []);
 
   // Prevent tab navigation and handle tab switching
   useEffect(() => {
     const handleBeforeUnload = (event: BeforeUnloadEvent) => {
       event.preventDefault();
-      event.returnValue = ""; 
     };
 
     const handleVisibilityChange = () => {
       if (document.visibilityState !== "visible") {
         // Terminate the exam if the user switches tabs
         setExamFinished(true);
-        if (mediaStream) {
-          mediaStream.getTracks().forEach((track) => track.stop());
-        }
+        stopMediaStream(); // Stop camera and microphone
         alert("Exam terminated because you switched tabs or minimized the window.");
         navigate("/exam-finished", { state: { reason: "You switched tabs or minimized the window." } });
       }
@@ -208,7 +219,8 @@ const Exam: React.FC = () => {
       window.removeEventListener("beforeunload", handleBeforeUnload);
       document.removeEventListener("visibilitychange", handleVisibilityChange);
     };
-  }, [mediaStream, navigate]);
+    // eslint-disable-next-line react-hooks/exhaustive-deps
+  }, [navigate]);
 
   // Monitor camera and microphone
   useEffect(() => {
@@ -262,49 +274,64 @@ const Exam: React.FC = () => {
 
   // Handle exam submission
   const handleSubmitExam = () => {
-    if (mediaStream) {
-      mediaStream.getTracks().forEach((track) => track.stop()); // Stop camera and microphone
-    }
+    stopMediaStream(); // Stop camera and microphone
     generatePDF(); // Generate and download the PDF
     alert("Exam submitted successfully! Your results have been downloaded.");
-    navigate("/"); // Navigate back to the home page
+    navigate("/exam-completed"); // Navigate to a "Thank You" page or home page
   };
 
   return (
     <div className={styles.examContainer}>
-      {error ? (
-        <p className={styles.error}>{error}</p>
-      ) : examFinished ? (
-        <p className={styles.error}>The exam was terminated because you switched tabs or minimized the window.</p>
-      ) : (
-        <>
-          <h2>Exam in Progress</h2>
-          <video ref={videoRef} autoPlay muted className={styles.video} />
-          <p>Please keep your camera and microphone on during the exam.</p>
-
-          {/* Exam Questions */}
-          <div className={styles.questions}>
-            {questions.map((q) => (
-              <div key={q.id}>
-                <h3>{q.question}</h3>
-                <input
-                  type="text"
-                  placeholder="Your answer"
-                  value={userAnswers[q.id] || ""}
-                  onChange={(e) => handleAnswerChange(q.id, e.target.value)}
-                />
-              </div>
-            ))}
+    {error ? (
+      <div className={styles.card}>
+        <p className={`${styles.error} ${styles.errorMessage}`}>{error}</p>
+      </div>
+    ) : examFinished ? (
+      <div className={styles.card}>
+        <p className={`${styles.error} ${styles.errorMessage}`}>
+          The exam was terminated because you switched tabs or minimized the window.
+        </p>
+      </div>
+    ) : (
+      <>
+        <h2>Exam in Progress</h2>
+        <div className={styles.card}>
+          <div className={styles.overview}>
+            <div className={styles.videoContainer}>
+              <video ref={videoRef} autoPlay muted className={styles.video} />
+            </div>
+            <p className={styles.instructions}>
+              Please keep your camera and microphone on during the exam.
+            </p>
           </div>
 
-          {/* Submit Button */}
-          <button onClick={handleSubmitExam} className={styles.submitButton}>
-            Submit Exam
-          </button>
-        </>
-      )}
-    </div>
-  );
+          <div className={styles.section}>
+            <h3>Exam Questions</h3>
+            <div className={styles.questions}>
+              {questions.map((q) => (
+                <div key={q.id} className={styles.questionCard}>
+                  <h4>{q.question}</h4>
+                  <input
+                    type="text"
+                    placeholder="Your answer"
+                    value={userAnswers[q.id] || ""}
+                    onChange={(e) => handleAnswerChange(q.id, e.target.value)}
+                  />
+                </div>
+              ))}
+            </div>
+          </div>
+
+          <div className={styles.examButtonContainer}>
+            <button onClick={handleSubmitExam} className={styles.examButton}>
+              Submit Exam
+            </button>
+          </div>
+        </div>
+      </>
+    )}
+  </div>
+);
 };
 
 export default Exam;
