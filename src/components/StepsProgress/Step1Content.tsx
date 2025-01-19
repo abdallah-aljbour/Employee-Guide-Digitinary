@@ -371,7 +371,7 @@
 import React, { useState, useEffect } from 'react';
 import styles from './Step1Content.module.scss';
 import QuestionComponent from './QuestionComponent'; 
-import microFrontEnd from '../../assets/image.png'
+import microFrontEnd from '../../assets/Micro Front End.png'
 
 
 interface Step1ContentProps {
@@ -466,12 +466,12 @@ const Step1Content: React.FC<Step1ContentProps> = ({ onAnswerCorrect }) => {
           </p>
           <ul>
             <li>
-              <a href="#" target="_blank" rel="noopener noreferrer">
+              <a href="https://www.aplyca.com/en/blog/micro-frontends-what-are-they-and-when-to-use-them" target="_blank" rel="noopener noreferrer">
                 Micro Frontend Overview
               </a>
             </li>
             <li>
-              <a href="#" target="_blank" rel="noopener noreferrer">
+              <a href="https://medium.com/appfoster/a-comprehensive-guide-to-micro-frontend-architecture-cc0e31e0c053" target="_blank" rel="noopener noreferrer">
                 Detailed Architecture
               </a>
             </li>
@@ -504,7 +504,7 @@ const Step1Content: React.FC<Step1ContentProps> = ({ onAnswerCorrect }) => {
           </p>
           <ul>
             <li>
-              <a href="#" target="_blank" rel="noopener noreferrer">
+              <a href="https://ui.shared.digitinary.net/overview" target="_blank" rel="noopener noreferrer">
                 Digitinary-UI Documentation
               </a>
             </li>

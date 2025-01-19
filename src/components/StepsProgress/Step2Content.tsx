@@ -94,12 +94,12 @@ const Step2Content: React.FC<Step2ContentProps> = ({ onAnswerCorrect }) => {
           </p>
           <ul>
             <li>
-              <a href="#" target="_blank" rel="noopener noreferrer">
+              <a href="https://asana.com/resources/business-requirements-document-template" target="_blank" rel="noopener noreferrer">
                 Business Docs Link 1
               </a>
             </li>
             <li>
-              <a href="#" target="_blank" rel="noopener noreferrer">
+              <a href="https://asana.com/resources/business-requirements-document-template" target="_blank" rel="noopener noreferrer">
                 Business Docs Link 2
               </a>
             </li>
