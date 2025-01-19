@@ -1,6 +1,6 @@
 import React, { useState, useEffect } from 'react';
 import styles from './Step3Content.module.scss';
-import QuestionComponent from './QuestionComponent'; // Import the reusable QuestionComponent
+import QuestionComponent from './QuestionComponent';
 
 interface Step3ContentProps {
   onAnswerCorrect: (isCorrect: boolean) => void;
