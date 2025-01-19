@@ -1,5 +1,5 @@
 import React, { useState } from 'react';
-import { BrowserRouter as Router, Routes, Route } from 'react-router-dom';
+import { BrowserRouter as Router, Routes, Route, Outlet } from 'react-router-dom';
 import Sidebar from './components/Sidebar/Sidebar';
 import MainHome from './components/mainHome';
 import ArenaPage from './components/ArenaPage';
@@ -8,6 +8,7 @@ import KnetPage from './components/knetPage';
 import Exam from './components/Exam/Exam';
 import ExamFinished from './components/Exam/ExamFinished';
 import ExamCompleted from './components/Exam/ExamCompleted';
+import SignInForm from './components/SignInForm';
 import './scssStyle/App.scss';
 
 const App: React.FC = () => {
@@ -16,9 +17,9 @@ const App: React.FC = () => {
   return (
     <Router>
       <div className="app">
-        <Sidebar isOpen={isSidebarOpen} onToggle={() => setIsSidebarOpen(!isSidebarOpen)} />
-        <div className={`mainContent ${!isSidebarOpen ? 'sidebarClosed' : ''}`}>
-          <Routes>
+        <Routes>
+          <Route path="/signin" element={<SignInForm />} />
+          <Route element={<Layout isSidebarOpen={isSidebarOpen} setIsSidebarOpen={setIsSidebarOpen} />}>
             <Route path="/" element={<MainHome />} />
             <Route path="/arena" element={<ArenaPage />} />
             <Route path="/dgate" element={<DgatePage />} />
@@ -26,10 +27,26 @@ const App: React.FC = () => {
             <Route path="/exam" element={<Exam />} />
             <Route path="/exam-finished" element={<ExamFinished />} />
             <Route path="/exam-completed" element={<ExamCompleted />} />
-          </Routes>
-        </div>
+          </Route>
+        </Routes>
       </div>
     </Router>
+  );
+};
+
+interface LayoutProps {
+  isSidebarOpen: boolean;
+  setIsSidebarOpen: (isOpen: boolean) => void;
+}
+
+const Layout: React.FC<LayoutProps> = ({ isSidebarOpen, setIsSidebarOpen }) => {
+  return (
+    <>
+      <Sidebar isOpen={isSidebarOpen} onToggle={() => setIsSidebarOpen(!isSidebarOpen)} />
+      <div className={`mainContent ${!isSidebarOpen ? 'sidebarClosed' : ''}`}>
+        <Outlet /> 
+      </div>
+    </>
   );
 };
 
