@@ -1,30 +1,3 @@
-// import React, { useState } from 'react';
-// import styles from '../../../scssStyle/ExpandableSection.module.scss';
-
-// interface ExpandableSectionProps {
-//   title: string;
-//   children: React.ReactNode;
-// }
-
-// const ExpandableSection: React.FC<ExpandableSectionProps> = ({ title, children }) => {
-//   const [isExpanded, setIsExpanded] = useState(false);
-
-//   const toggleExpand = () => {
-//     setIsExpanded(!isExpanded);
-//   };
-
-//   return (
-//     <div className={styles.expandableSection}>
-//       <div className={styles.header} onClick={toggleExpand}>
-//         <h3>{title}</h3>
-//         <span className={styles.arrow}>{isExpanded ? '▼' : '▶'}</span>
-//       </div>
-//       {isExpanded && <div className={styles.content}>{children}</div>}
-//     </div>
-//   );
-// };
-
-// export default ExpandableSection;
 import React, { useState } from 'react';
 import { useNavigate } from 'react-router-dom';
 import styles from '../../../scssStyle/ExpandableSection.module.scss';

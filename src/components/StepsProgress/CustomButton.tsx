@@ -1,5 +1,5 @@
 import React from 'react';
-import styles from './CustomButton.module.scss'; // Import the SCSS file for the button
+import styles from './CustomButton.module.scss';
 
 interface CustomButtonProps {
   label: string; // Text to display on the button
