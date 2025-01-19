@@ -1,7 +1,8 @@
 import React, { useState, useEffect } from 'react';
 import { useNavigate } from 'react-router-dom';
 import styles from './Step5Content.module.scss';
-import QuestionComponent from './QuestionComponent'; 
+import QuestionComponent from './QuestionComponent';
+import Button from '../Button'; 
 
 interface Step5ContentProps {
   onAnswerCorrect: (isCorrect: boolean) => void;
@@ -153,9 +154,12 @@ const Step5Content: React.FC<Step5ContentProps> = ({ onAnswerCorrect }) => {
       {/* Exam Button */}
       {isStepCompleted && (
         <div className={styles.examButtonContainer}>
-          <button onClick={handleStartExam} className={styles.examButton}>
+          <Button
+            onClick={handleStartExam}
+            className={styles.examButton}
+          >
             Start Exam
-          </button>
+          </Button>
         </div>
       )}
     </div>

@@ -1,5 +1,6 @@
 import React from "react";
 import styles from "./ExamCompleted.module.scss";
+import Button from "../Button"; 
 
 const ExamCompleted: React.FC = () => {
   return (
@@ -22,9 +23,12 @@ const ExamCompleted: React.FC = () => {
           </ol>
         </div>
         <div className={styles.examButtonContainer}>
-          <button className={styles.examButton} onClick={() => window.location.href = '/'}>
+          <Button
+            onClick={() => (window.location.href = "/")}
+            className={styles.examButton}
+          >
             Return to Home Page
-          </button>
+          </Button>
         </div>
       </div>
     </div>

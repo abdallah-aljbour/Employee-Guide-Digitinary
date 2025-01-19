@@ -1,4 +1,3 @@
-
 import React, { useState, useEffect, useRef } from 'react';
 import styles from '../scssStyle/ArenaPage.module.scss';
 import StepsProgress from '../components/StepsProgress/StepsProgress';
@@ -7,6 +6,7 @@ import Step2Content from '../components/StepsProgress/Step2Content';
 import Step3Content from './StepsProgress/Step3Content';
 import Step4Content from './StepsProgress/Step4Content';
 import Step5Content from './StepsProgress/Step5Content';
+import Button from './Button'; 
 
 const ArenaPage: React.FC = () => {
   const [currentStep, setCurrentStep] = useState(1);
@@ -75,20 +75,20 @@ const ArenaPage: React.FC = () => {
         <StepsProgress currentStep={currentStep} />
         {renderStepContent()}
         <div className={styles.navigationButtons}>
-          <button 
+          <Button 
             onClick={handlePrevious} 
             disabled={currentStep === 1}
-            className="px-4 py-2 mr-2 bg-gray-200 rounded disabled:opacity-50"
+            className="mr-2 bg-gray-200 disabled:opacity-50"
           >
             Previous
-          </button>
-          <button
+          </Button>
+          <Button
             onClick={handleNext}
             disabled={currentStep === 5 || !stepCorrectness[currentStep]}
-            className="px-4 py-2 bg-blue-500 text-white rounded disabled:opacity-50"
+            className="bg-blue-500 text-white disabled:opacity-50"
           >
             Next
-          </button>
+          </Button>
         </div>
       </div>
     </div>

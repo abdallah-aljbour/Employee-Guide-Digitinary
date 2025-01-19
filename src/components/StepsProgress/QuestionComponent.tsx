@@ -1,6 +1,6 @@
 import React, { useState, useEffect } from 'react';
-import CustomButton from './CustomButton';
-
+import Button from '../Button'; 
+import styles from '../../scssStyle/QuestionComponent.module.scss'; 
 interface QuestionComponentProps {
   question: string;
   options: { value: string; label: string }[];
@@ -58,19 +58,23 @@ const QuestionComponent: React.FC<QuestionComponentProps> = ({
 
       {/* Submit Button */}
       {!isSubmitted && (
-        <CustomButton
-          label="Submit"
+        <Button
           onClick={handleSubmit}
           disabled={!selectedAnswer}
-        />
+          className={styles.button} // Apply the scoped class
+        >
+          Submit
+        </Button>
       )}
 
       {/* Try Again Button */}
       {isSubmitted && !isCorrect && (
-        <CustomButton
-          label="Try Again"
+        <Button
           onClick={onTryAgain}
-        />
+          className={styles.button} // Apply the scoped class
+        >
+          Try Again
+        </Button>
       )}
 
       {/* Feedback Message */}
