@@ -114,7 +114,6 @@ const Step3Content: React.FC<Step3ContentProps> = ({ onAnswerCorrect }) => {
             <li>
               <strong>User Management:</strong> User-related features and services.
             </li>
-            <li>...</li>
           </ul>
         </div>
 

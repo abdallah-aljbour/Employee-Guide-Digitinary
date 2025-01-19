@@ -1,5 +1,5 @@
 import React, { useState, useEffect } from 'react';
-import CustomButton from './CustomButton'; 
+import CustomButton from './CustomButton';
 
 interface QuestionComponentProps {
   question: string;
@@ -18,28 +18,24 @@ const QuestionComponent: React.FC<QuestionComponentProps> = ({
 }) => {
   const [selectedAnswer, setSelectedAnswer] = useState<string | null>(null);
   const [isSubmitted, setIsSubmitted] = useState(false);
-  const [isCorrect, setIsCorrect] = useState(false);
+  const [isCorrect, setIsCorrect] = useState<boolean | null>(null);
 
   const handleAnswerChange = (answer: string) => {
     setSelectedAnswer(answer);
   };
 
   const handleSubmit = () => {
-    if (selectedAnswer === correctAnswer) {
-      setIsCorrect(true);
-      onAnswerCorrect(true); // Notify parent that the answer is correct
-    } else {
-      setIsCorrect(false);
-      onAnswerCorrect(false); // Notify parent that the answer is wrong
-    }
-    setIsSubmitted(true); // Hide the Submit button after submission
+    const isAnswerCorrect = selectedAnswer === correctAnswer;
+    setIsCorrect(isAnswerCorrect);
+    setIsSubmitted(true);
+    onAnswerCorrect(isAnswerCorrect); // Notify parent component
   };
 
   // Reset the state when the question changes
   useEffect(() => {
     setSelectedAnswer(null);
     setIsSubmitted(false);
-    setIsCorrect(false);
+    setIsCorrect(null);
   }, [question]);
 
   return (
@@ -78,7 +74,7 @@ const QuestionComponent: React.FC<QuestionComponentProps> = ({
       )}
 
       {/* Feedback Message */}
-      {isSubmitted && (
+      {isSubmitted && isCorrect !== null && (
         <div style={{ color: isCorrect ? 'green' : 'red', fontWeight: 'bold', marginTop: '10px' }}>
           {isCorrect
             ? 'Correct answer! You can proceed to the next step.'

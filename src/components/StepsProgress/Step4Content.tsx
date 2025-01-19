@@ -1,6 +1,7 @@
 import React, { useState, useEffect } from 'react';
 import styles from './Step4Content.module.scss';
-import QuestionComponent from './QuestionComponent'; // Import the reusable QuestionComponent
+import QuestionComponent from './QuestionComponent'; 
+import deployment from '../../assets/image.png'
 
 interface Step4ContentProps {
   onAnswerCorrect: (isCorrect: boolean) => void;
@@ -99,11 +100,10 @@ const Step4Content: React.FC<Step4ContentProps> = ({ onAnswerCorrect }) => {
           </ul>
         </div>
 
-        {/* Image Placeholder */}
         <div className={styles.imagePlaceholder}>
-          {/* Placeholder for image */}
-          <p>Image will be added here</p>
-        </div>
+  {/* Display the imported image */}
+  <img src={deployment} alt="Micro Front End" className="your-image-class" />
+</div>
 
         {/* Jira and Ticket Process Section */}
         <div className={styles.section}>
