@@ -1,6 +1,7 @@
 import React from "react";
 import { useLocation, useNavigate } from "react-router-dom";
 import styles from "./ExamFinished.module.scss";
+import Button from "../Button";
 
 const ExamFinished: React.FC = () => {
   const location = useLocation();
@@ -47,9 +48,12 @@ const ExamFinished: React.FC = () => {
         </div>
 
         <div className={styles.buttonContainer}>
-          <button onClick={handleReturnHome} className={styles.returnButton}>
+          <Button
+            onClick={handleReturnHome}
+            className={styles.returnButton}
+          >
             Return to Home
-          </button>
+          </Button>
         </div>
       </div>
     </div>

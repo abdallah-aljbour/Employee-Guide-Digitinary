@@ -2,6 +2,7 @@ import React, { useEffect, useRef, useState } from "react";
 import { useNavigate } from "react-router-dom";
 import { jsPDF } from "jspdf";
 import styles from "./Exam.module.scss";
+import Button from "../Button"; 
 
 const Exam: React.FC = () => {
   const videoRef = useRef<HTMLVideoElement>(null);
@@ -265,9 +266,12 @@ const Exam: React.FC = () => {
             </div>
 
             <div className={styles.examButtonContainer}>
-              <button onClick={handleSubmitExam} className={styles.examButton}>
+              <Button
+                onClick={handleSubmitExam}
+                className={styles.examButton}
+              >
                 Submit Exam
-              </button>
+              </Button>
             </div>
           </div>
         </>
