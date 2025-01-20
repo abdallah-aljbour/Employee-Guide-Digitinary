@@ -15,10 +15,10 @@ const ExamCompleted: React.FC = () => {
           <h4>Next Steps</h4>
           <ol>
             <li>
-              <strong>Results:</strong> Your exam results will be processed and available soon.
+              <strong>Results:</strong> Your exam results you see it in the pdf.
             </li>
             <li>
-              <strong>Notification:</strong> You will receive an email when your results are ready.
+              <strong>Notification:</strong> You will receive an email if the leader want any thing from you.
             </li>
           </ol>
         </div>
