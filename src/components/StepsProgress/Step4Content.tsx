@@ -1,7 +1,8 @@
-import React, { useState, useEffect } from 'react';
+import React, { useState } from 'react';
 import styles from './Step4Content.module.scss';
-import QuestionComponent from './QuestionComponent'; 
-import deployment from '../../assets/image.png'
+import QuestionComponent from './QuestionComponent';
+import Timer from '../Timer'; 
+import deployment from '../../assets/image.png';
 
 interface Step4ContentProps {
   onAnswerCorrect: (isCorrect: boolean) => void;
@@ -10,8 +11,6 @@ interface Step4ContentProps {
 const Step4Content: React.FC<Step4ContentProps> = ({ onAnswerCorrect }) => {
   const [currentQuestionIndex, setCurrentQuestionIndex] = useState(0);
   const [incorrectAttempts, setIncorrectAttempts] = useState(0); // Track incorrect attempts
-  const [showTimer, setShowTimer] = useState(false); // Control timer visibility
-  const [timer, setTimer] = useState(1); // Timer in seconds
 
   // List of questions with options and correct answers (based on Step 4 content)
   const questions = [
@@ -44,20 +43,6 @@ const Step4Content: React.FC<Step4ContentProps> = ({ onAnswerCorrect }) => {
     },
   ];
 
-  // Handle the timer countdown
-  useEffect(() => {
-    if (showTimer && timer > 0) {
-      const interval = setInterval(() => {
-        setTimer((prevTimer) => prevTimer - 1);
-      }, 1000);
-      return () => clearInterval(interval);
-    } else if (showTimer && timer === 0) {
-      setShowTimer(false); // Hide the timer
-      setIncorrectAttempts(0); // Reset incorrect attempts
-      setTimer(59); // Reset the timer
-    }
-  }, [showTimer, timer]);
-
   const handleTryAgain = () => {
     // Move to the next question (or loop back to the first question)
     setCurrentQuestionIndex((prevIndex) => (prevIndex + 1) % questions.length);
@@ -66,13 +51,15 @@ const Step4Content: React.FC<Step4ContentProps> = ({ onAnswerCorrect }) => {
   const handleAnswerCorrect = (isCorrect: boolean) => {
     if (!isCorrect) {
       setIncorrectAttempts((prevAttempts) => prevAttempts + 1); // Increment incorrect attempts
-      if (incorrectAttempts + 1 >= 3) {
-        setShowTimer(true); // Show the timer after 3 incorrect attempts
-      }
     } else {
       setIncorrectAttempts(0); // Reset incorrect attempts if the answer is correct
     }
     onAnswerCorrect(isCorrect); // Notify parent component
+  };
+
+  const handleTimerEnd = () => {
+    setIncorrectAttempts(0); // Reset incorrect attempts
+    setCurrentQuestionIndex(0); // Reset to the first question
   };
 
   return (
@@ -101,9 +88,9 @@ const Step4Content: React.FC<Step4ContentProps> = ({ onAnswerCorrect }) => {
         </div>
 
         <div className={styles.imagePlaceholder}>
-  {/* Display the imported image */}
-  <img src={deployment} alt="Micro Front End" className="your-image-class" />
-</div>
+          {/* Display the imported image */}
+          <img src={deployment} alt="Micro Front End" className="your-image-class" />
+        </div>
 
         {/* Jira and Ticket Process Section */}
         <div className={styles.section}>
@@ -118,17 +105,14 @@ const Step4Content: React.FC<Step4ContentProps> = ({ onAnswerCorrect }) => {
 
       {/* Question Section */}
       <div className={styles.card}>
-        {showTimer ? (
-          <div style={{ color: 'red', fontWeight: 'bold' }}>
-            You have answered incorrectly 3 times. Please review the content carefully, and if you have any questions, ask the leader for help.
-            <br />
-            The test will restart in {timer} second(s).
-          </div>
-        ) : incorrectAttempts >= 3 ? (
-          <div style={{ color: 'red', fontWeight: 'bold' }}>
-            You have answered incorrectly 3 times. Please review the content carefully, and if you have any questions, ask the leader for help.
-          </div>
-        ) : (
+        <Timer
+          initialTime={59} // Set the initial time to 59 seconds
+          incorrectAttempts={incorrectAttempts} // Pass the number of incorrect attempts
+          maxAttempts={3} // Show the timer after 3 incorrect attempts
+          onTimeout={handleTimerEnd} // Callback when the timer ends
+        />
+
+        {incorrectAttempts < 3 && (
           <QuestionComponent
             key={currentQuestionIndex} // Force reset when the question changes
             question={questions[currentQuestionIndex].question}
