@@ -8,7 +8,7 @@
   h2 {
     font-size: 2.25rem;
     margin-bottom: 1.5rem;
-    background: linear-gradient(90deg, #0288d1, #009688); /* Text gradient remains unchanged */
+    background: linear-gradient(90deg, #0288d1, #009688);
     background-clip: text;
     -webkit-background-clip: text;
     color: transparent;
@@ -32,7 +32,7 @@
     h3 {
       font-size: 1.75rem;
       margin-bottom: 1rem;
-      color: #0288d1; /* Text color remains unchanged */
+      color: #0288d1; 
       font-weight: 600;
     }
 
@@ -50,7 +50,7 @@
 
       p {
         font-size: 1rem;
-        color: #455a64; /* Text color remains unchanged */
+        color: #455a64; 
         line-height: 1.6;
         margin-bottom: 1rem;
       }
@@ -72,17 +72,17 @@
             top: 8px;
             width: 8px;
             height: 8px;
-            background: linear-gradient(45deg, #0288d1, #009688); /* Bullet gradient remains unchanged */
+            background: linear-gradient(45deg, #0288d1, #009688); 
             border-radius: 50%;
           }
 
           a {
-            color: #0288d1; /* Link color remains unchanged */
+            color: #0288d1; 
             text-decoration: none;
             transition: color 0.2s ease;
             
             &:hover {
-              color: #009688; /* Link hover color remains unchanged */
+              color: #009688; 
               text-decoration: none;
             }
           }
@@ -91,8 +91,8 @@
     }
 
     .successMessage {
-      background: linear-gradient(45deg, #f5f5f5, #ffffff); /* Updated to shades of white */
-      color: #009688; /* Text color remains unchanged */
+      background: linear-gradient(45deg, #f5f5f5, #ffffff); 
+      color: #009688;
       padding: 0.75rem 1rem;
       border-radius: 8px;
       font-weight: 500;
@@ -102,7 +102,7 @@
       gap: 0.5rem;
 
       @supports not (gap: 0.5rem) {
-        // Fallback for browsers that don't support gap
+        
         > * + * {
           margin-left: 0.5rem;
         }
@@ -110,8 +110,8 @@
     }
 
     .errorMessage {
-      background: #ffffff; /* Updated to white */
-      color: #e53e3e; /* Text color remains unchanged */
+      background: #ffffff; 
+      color: #e53e3e; 
       padding: 0.75rem 1rem;
       border-radius: 8px;
       font-weight: 500;
@@ -121,7 +121,7 @@
       gap: 0.5rem;
 
       @supports not (gap: 0.5rem) {
-        // Fallback for browsers that don't support gap
+       
         > * + * {
           margin-left: 0.5rem;
         }
@@ -133,8 +133,8 @@
       justify-content: center;
       align-items: center;
       height: 200px;
-      background: #ffffff; /* Updated to white */
-      color: #0288d1; /* Text color remains unchanged */
+      background: #ffffff; 
+      color: #0288d1; 
       font-size: 1rem;
       font-weight: 500;
       transition: all 0.3s ease;
@@ -155,7 +155,7 @@
     }
   }
 
-  // Media queries for responsive design
+  
   @media screen and (max-width: 768px) {
     padding: 1.5rem;
 
@@ -197,7 +197,7 @@
   }
 }
 
-// Optional: Add these keyframes if you want to add loading animations
+
 @keyframes shimmer {
   0% {
     background-position: -1000px 0;
@@ -209,6 +209,6 @@
 
 .loading {
   animation: shimmer 2s infinite linear;
-  background: linear-gradient(to right, #f6f7f8 0%, #f5f5f5 20%, #f6f7f8 40%); /* Updated to shades of white */
+  background: linear-gradient(to right, #f6f7f8 0%, #f5f5f5 20%, #f6f7f8 40%); 
   background-size: 1000px 100%;
 }
