@@ -1,47 +1,46 @@
 .arenaPage {
-    flex: 1;
-    margin-left: 35px;
-    padding: 20px;
-    background: linear-gradient(135deg,
-  rgba(61, 203, 195, 0.9),
-  rgba(255, 255, 255, 0.6) 50%,
-  rgba(62, 108, 219, 0.9)
-  
-);
-    color: #2c3e50;
-    box-sizing: border-box;
-  
-    h1 {
-      font-size: 2rem;
-      margin-bottom: 20px;
-    }
-  
-    p {
-      font-size: 1.2rem;
-    }
+  flex: 1;
+  margin-left: 35px;
+  padding: 20px;
+  background: linear-gradient(135deg,
+      rgba(255, 255, 255, 0.9), 
+      rgba(245, 245, 245, 0.9) 50%,
+      rgba(255, 255, 255, 0.9) 
+  );
+  color: #2c3e50; 
+  box-sizing: border-box;
+
+  h1 {
+    font-size: 2rem;
+    margin-bottom: 20px;
   }
 
-  .navigationButtons {
-    display: flex;
-    gap: 10px;
-    margin-top: 20px;
-  
-    button {
-      padding: 10px 20px;
-      background-color: #1abc9c;
-      color: white;
-      border: none;
-      border-radius: 4px;
-      cursor: pointer;
-      transition: background-color 0.3s ease;
-  
-      &:hover {
-        background-color: #16a085;
-      }
-  
-      &:disabled {
-        background-color: #ddd;
-        cursor: not-allowed;
-      }
+  p {
+    font-size: 1.2rem;
+  }
+}
+
+.navigationButtons {
+  display: flex;
+  gap: 10px;
+  margin-top: 20px;
+
+  button {
+    padding: 10px 20px;
+    background-color: #1abc9c; 
+    color: white; 
+    border: none;
+    border-radius: 4px;
+    cursor: pointer;
+    transition: background-color 0.3s ease;
+
+    &:hover {
+      background-color: #16a085; 
+    }
+
+    &:disabled {
+      background-color: #ddd; 
+      cursor: not-allowed;
     }
   }
+}
